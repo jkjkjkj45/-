@@ -1,0 +1,312 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Formular";
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: normal;
+    color: black;
+    background-size: cover;
+
+}
+
+.main{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1320px;
+    
+}
+
+.wrapper {
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/*Header start*/
+.header {
+    /*    position: absolute; Возможно нужно для корректного отображения фона*/
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.header_wrapper {
+    display: flex; /*Размещает елемены в строку*/
+    flex-wrap: wrap; /*Позволяет размещать жлементы в несколько рядов*/
+    align-items: center; /*По оси выравнивание по центру*/
+    justify-content: space-evenly;
+    margin-top: 4px;
+    
+    border-radius: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.header_logo {
+    margin-right: 5px; 
+}
+
+
+.header_list {
+    display: flex; /*Список был в строчке*/
+    flex-wrap: wrap;
+    font-family: 'Formular';
+}
+
+.header_items {
+    margin-right: 30px;
+    height: 30px;
+    margin-top: 4px;
+}
+
+.header_link {
+    color: #000;
+    font-family: 'Formular';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-decoration: none;
+}
+.header_link:hover{
+    color: #21BECE;
+}
+
+.header_link:active{
+    color: #21BECE;
+}
+
+/*Intra start*/
+.intro{
+    padding-bottom: 100px;
+    padding-top: 200px;
+    background-color: lightblue; /* Цвет фона */
+    height: 745px;
+}
+
+
+
+.intro_titel{
+    font-family: 'Formular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 85px;
+    max-width: 883px;
+    text-align: center;
+    letter-spacing: 0.085em;
+    color: #000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 31px;
+}
+
+.intro_subtitel{
+    font-family: 'Formular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.085em;
+    max-width: 883px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 31px;
+}
+
+.hr{
+    text-decoration: none;
+}
+
+.image-button{
+    font-family: 'Formular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 270px;
+    height: 90px;
+    background-color: #21BECE;
+    border-radius: 45px;
+    border: none;
+    box-shadow: -4px 8px 9px 1px rgba(33, 190, 206, .50);
+    color: #000;
+}
+
+.image-button{
+    text-decoration: none;
+}
+
+.image-button:hover {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    color: #000000;
+    background-color: #3bdbf0;
+    box-shadow: -4px 8px 9px 1px rgba(2, 200, 222, 0.5);
+    transform: translateY(-2px);
+    
+}
+   
+.image-button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.text_r {
+    font-family: 'Formular';
+    font-style: normal;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_F {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    text-align: center;
+}
+
+.button_reg{
+    font-family: 'Formular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 34px;
+    text-align: center;
+    margin: 20px auto 0;
+    display: block;
+    width: 170px;
+    height: 40px;
+    background-color: #21BECE;
+    border-radius: 45px;
+    border: none;
+    box-shadow: -4px 8px 9px 1px rgba(33, 190, 206, .50);
+    color: #000;
+}
+
+.doctors-container {
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.doctor-card {
+
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+}
+
+.doctor-image {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.doctor-info {
+    font-family: 'Formular';
+    font-style: normal;
+    padding: 12px;
+}
+
+.modal-content{
+  /* Стили для шапки таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #21BECE; /* Цвет шапки таблицы */
+    color: white; /* Цвет текста в шапке */
+    padding: 10px;
+}
+
+/* Стили для ячеек времени */
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd; /* Граница ячеек */
+    cursor: pointer; /* Указатель на курсор при наведении */
+}
+
+/* Эффект подсветки ячеек при наведении */
+td:hover {
+    background-color: #3bdbf0; /* Цвет подсветки */
+}
+
+
+}

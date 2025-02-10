@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Врачи</title>
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" />
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td:hover {
+            background-color: #e0e0e0;
+        }
+
+        .booked {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .booked-by-user {
+            background-color: #aaf;
+            cursor: default;
+        }
+
+        .expired {
+            background-color: #f88;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="header_wrapper">
+                <!--Логотип-->
+                <div class="header_logo">
+                    <a href="{{ url_for('index') }}" class="header_logo_link">
+                        <img src="{{ url_for('static', filename='MIORU.png') }}" class="header_logo_pic">
+                    </a>
+                </div>
+                <nav class="header_nav">
+                    <ul class="header_list">
+                        {% if user %}
+                            <li class="header_items">
+                                <span class="header_link">{{ user['name'] }} | </span>
+                            </li>
+                            <li class="header_items">
+                               <a href="{{ url_for('my_appointments') }}" class="header_link">Мои Записи</a>
+                            </li>
+                            <li class="header_items">
+                                <a href="{{ url_for('logout') }}" class="header_link">Выйти</a>
+                            </li>
+                        {% else %}
+                            <li class="header_items">
+                                <a href="{{ url_for('login') }}"  class="white_button">Войти</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="doctors-container">
+        
+        <div class="text_r">НАШИ ВРАЧИ</div>
+
+        <!-- Первый врач -->
+        <div class="doctor-card">
+            <img src="{{ url_for('static', filename='i.webp') }}" alt="Доктор Иванов" class="doctor-image">
+            <div class="doctor-info">
+                <h2>Иванов Иван Иванович</h2>
+                <p><strong>Специальность:</strong> Хирург</p>
+                <p><strong>Опыт работы:</strong> 10 лет</p>
+                <p><strong>Кабинет:</strong> 201</p>
+                <button class="button_reg" onclick="openModal('Иванов Иван Иванович')">Записаться</button>
+            </div>
+        </div>
+
+        <!-- Второй врач -->
+        <div class="doctor-card">
+            <img src="{{ url_for('static', filename='Петрова.jpg') }}" alt="Доктор Петрова" class="doctor-image">
+            <div class="doctor-info">
+                <h2>Петрова Мария Сергеевна</h2>
+                <p><strong>Специальность:</strong> Терапевт</p>
+                <p><strong>Опыт работы:</strong> 7 лет</p>
+                <p><strong>Кабинет:</strong> 207</p>
+                <button class="button_reg" onclick="openModal('Петрова Мария Сергеевна')">Записаться</button>
+            </div>
+        </div>
+
+        <!-- Третий врач -->
+        <div class="doctor-card">
+            <img src="{{ url_for('static', filename='Сидоров.jpg') }}" alt="Доктор Сидоров" class="doctor-image">
+            <div class="doctor-info">
+                <h2>Сидоров Алексей Петрович</h2>
+                <p><strong>Специальность:</strong> Кардиолог</p>
+                <p><strong>Опыт работы:</strong> 3 года</p>
+                <p><strong>Кабинет:</strong> 211</p>
+                <button class="button_reg" onclick="openModal('Сидоров Алексей Петрович')">Записаться</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="doctorName"></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- Заголовки для дат на неделю -->
+                        <th></th>
+                        <th colspan="5" id="dateHeader"></th>
+                    </tr>
+                    <tr>
+                        <!-- Даты будут добавлены через JavaScript -->
+                    </tr>
+                </thead>
+                <tbody id="timeTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script> 
+        const userEmail = "{{ user.email }}"; 
+        const appointments = {{ appointments|tojson }}; 
+    </script>
+    
+</body>
+
+</html>

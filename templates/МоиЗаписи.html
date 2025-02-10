@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Записи</title>
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="header_wrapper">
+                <!--Логотип-->
+                <div class="header_logo">
+                    <a href="{{ url_for('index') }}" class="header_logo_link">
+                        <img src="{{ url_for('static', filename='MIORU.png') }}" class="header_logo_pic">
+                    </a>
+                </div>
+                <!--Меню
+                <nav class="header_nav">
+                    <ul class="header_list">
+                        {% if user %}
+                            <li class="header_items">
+                                <span class="header_link">{{ user['name'] }} | </span>
+                            </li>
+                            <li class="header_items">
+                               <a href="{{ url_for('my_appointments') }}" class="header_link">Мои Записи</a>
+                            </li>
+                            <li class="header_items">
+                                <a href="{{ url_for('logout') }}" class="header_link">Выйти</a>
+                            </li>
+                        {% else %}
+                            <li class="header_items">
+                                <a href="{{ url_for('login') }}"  class="white_button">Войти</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>-->
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Мои Записи</h1>
+        {% if appointments %}
+            <ul>
+                {% for appt in appointments %}
+                    <li>Доктор: {{ appt.doctor_name }}, Дата и время: {{ appt.appointment_time }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>У вас нет записей к врачам.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" />
+        <title>MIORU</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="wrapper">
+                <div class="header_wrapper">
+                    <!--Логотип-->
+                    <div class="header_logo">
+                        <a href="{{ url_for('index') }}" class="header_logo_link">
+                            <img src="{{ url_for('static', filename='MIORU.png') }}" class="header_logo_pic">
+                        </a>
+                    </div>
+                    <!--Меню-->
+                    <nav class="header_nav">
+                        <ul class="header_list">
+                            <li class="header_items">
+                                <a href="{{ url_for('doctors') }}" class="header_link">Врачи</a>
+                            </li>
+                            <li class="header_items">
+                                <a href="{{ url_for('login') }}" class="header_link">Войти</a>
+                            </li>
+                        </ul>  
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="intro">
+            <div class="text_r">РЕГИСТРАЦИЯ</div>
+            <div class="register_F"> 
+                <form action="/register" method="post"> 
+                
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button class="button_reg" type="submit">Зарегистрироваться</button>
+                </form>
+                
+                <a href="{{ url_for('login') }}" class="hr">
+                    <button type="button">Войти</button>
+                </a>
+            </div>    
+        </div>
+        
+    </body>
+</html>

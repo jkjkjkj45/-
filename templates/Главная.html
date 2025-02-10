@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <head>
+            <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+            <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" />
+            <title>MIORU</title>
+        </head>
+    </head>
+    <body>
+        <header class="header">
+            <div class="wrapper">
+    
+                <div class="header_wrapper">
+                    <!--Логотип-->
+                    <div class="header_logo">
+                        <a href="{{ url_for('index') }}" class="header_logo_link">
+                            <img src="{{ url_for('static', filename='MIORU.png') }}" class="header_logo_pic">
+                        </a>
+                    </div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul class="flashed-messages">
+                                {% for category, message in messages %}
+                                    {% if category == 'log_out' %}  <!-- Проверяем категорию сообщения -->
+                                        <li>{{ message }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+    
+                    <!--Меню-->
+                    <!--
+                    <nav>
+                        <ul class="header_list">
+                            <li class="header_items">
+                                <a href="Вход.html" class="white_button">Личный кабинет</a>
+                            </li>   
+                        </ul>  
+                    </nav>
+                    -->
+                    <nav class="header_nav">
+                        <ul class="header_list">
+                            
+                            {% if user %}
+                                <li class="header_items">
+                                    <span class="header_link">{{ user['name'] }} | </span>
+                                </li>
+                                <li class="header_items">
+                                    <a href="{{ url_for('my_appointments') }}" class="header_link">Мои Записи</a>
+                                </li>
+                                <li class="header_items">
+                                    <a href="{{ url_for('logout') }}" class="header_link">Выйти</a>
+                                </li>
+                            {% else %}
+                                <li class="header_items">
+                                    <a href="{{ url_for('login') }}"  class="white_button">Войти</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+
+                <nav class="header_nav"> 
+                    <ul class="header_list"> 
+                        <li class="header_items"> 
+                            <a href="#about" class="header_link">О клинике</a> 
+                        </li> 
+                        <li class="header_items"> 
+                            <a href="#services" class="header_link">Услуги и цены</a> 
+                        </li> 
+                        <li class="header_items"> 
+                            <a href="{{ url_for('doctors') }}" class="header_link">Врачи</a>
+                        </li> 
+                        <li class="header_items"> 
+                            <a href="#contacts" class="header_link">Контакты</a> 
+                            
+                        </li> 
+                    </ul> 
+                </nav>
+            </div>
+        </header>
+
+        <div class="intro">
+            <div class="wrapper">
+                <h1 class="intro_titel">Медицинский Центр <br> MIORU</h1>
+
+                <p class="intro_subtitel">У нас только лучшие врачи и самые доступные цены.</p>
+                    
+                <div class="href_abit">
+                    <button class="image-button">
+                        <a href="{{ url_for('doctors') }}" class="hr">Записаться!</a>
+                    </button>
+                </div>                
+            </div>    
+        </div> 
+
+        <!-- О клинике --> 
+        <div id="about" class="section"> 
+            <h1>Медицинский Центр MIORU</h1> 
+            
+            <p>MIORU — это современный медицинский центр, где забота о вашем здоровье стоит на первом месте. 
+                Мы гордимся командой высококвалифицированных врачей, которые применяют передовые методы диагностики и лечения. 
+                Наши специалисты постоянно совершенствуют свои навыки, чтобы предоставлять медицинские услуги на самом высоком уровне.</p>
+
+            <p>В MIORU мы предлагаем широкий спектр услуг: от профилактических осмотров и диагностики до специализированных медицинских 
+                процедур и лечения. Мы используем только современное оборудование и материалы, что позволяет нам обеспечивать 
+                точность и эффективность каждого обращения.</p>
+
+            <p>Наши приоритеты:</p>
+            <ul>
+                <li>Профессионализм и опыт наших врачей.</li>
+                <li>Индивидуальный подход к каждому пациенту.</li>
+                <li>Доступные цены и прозрачность в оплате услуг.</li>
+                <li>Комфорт и удобство для наших пациентов.</li>
+            </ul>
+                
+
+            <p>Пусть ваше здоровье будет в надежных руках — доверяйте его профессионалам медицинского центра MIORU.</p>
+        </div> 
+        
+        <!-- Услуги и цены --> 
+         <div id="services" class="section"> 
+            <h2>Услуги и цены</h2> 
+            <p>Скоро будет.</p> 
+        </div> 
+        
+        <!-- Контакты --> 
+         <div id="contacts" class="section"> 
+            <h2>Контакты</h2> 
+            <p>Скоро будет.</p> 
+        </div>
+    </body>
+</html>
+
